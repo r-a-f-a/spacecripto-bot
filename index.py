@@ -134,17 +134,17 @@ def main():
     now = time.time()
     if(clickBtn(images['connect-wallet'], timeout=1)):
       print("Connected", now)
-    if(clickBtn(images['sign'], timeout=1)):
-      print("Sign", now)
-    if(clickBtn(images['play'], timeout=1)):
-      print("Clicked play", now)
-    if(clickBtn(images['ok'], timeout=1)):
-      print("Clicked ok", now)
+      if(clickBtn(images['sign'], timeout=1)):
+        print("Sign", now)
+      if(clickBtn(images['play'], timeout=1)):
+        print("Clicked play", now)
+      if(clickBtn(images['ok'], timeout=1)):
+        print("Clicked ok", now)
     # if(clickBtn(images['remove-spaceship'], timeout=1)):
     #   print("Remove Spaceship", now)
-    if(clickBtn(images['newest'], timeout=1)):
-      if(clickBtn(images['max-ammo'], timeout=1,threshold = 0.9)):
-        print("SET MAX AMMO", now)
+    # if(clickBtn(images['newest'], timeout=1)):
+    #   if(clickBtn(images['max-ammo'], timeout=1,threshold = 0.9)):
+    #     print("SET MAX AMMO", now)
     if(clickBtn(images['send-to-fight'], timeout=0.5, threshold=0.9)):
       print("send-to-fight", now)
     if(clickBtn(images['15-15'], timeout=0.2, threshold = 1)):
@@ -162,7 +162,7 @@ def main():
         print("SEND TO REPAIR", now)
     if(clickBtn(images['lose-confirm'], timeout=0.5, threshold = 0.9)):
       print("lose-confirm", now)
-    if not(clickBtn(images['send-to-fight'], timeout=0.2, threshold = 0.5)):
+    if not(clickBtn(images['send-to-fight'], timeout=0.2, threshold = 1)):
       print("have-no-spaceship", now)
       if(clickBtn(images['select-15'], timeout=0.2, threshold = 1)):
         print("select-15", now)
