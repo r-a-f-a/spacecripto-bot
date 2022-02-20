@@ -98,7 +98,7 @@ def clickBtn(img, timeout=3, threshold = ct['default']):
         # [793 790 335  41]
         moveTo(pos_click_x,pos_click_y,1)
         pyautogui.click()
-        moveTo(0,0,1)
+        moveTo(pos_click_x + 100,pos_click_y + 100,1)
         return True
 
     return False
@@ -147,53 +147,56 @@ def main():
       print("Clicked ok", now)
 
 
-    if(clickBtn(images['victory-confirm'], timeout=0.2, threshold=1)):
+    if(clickBtn(images['victory-confirm'], timeout=0.5, threshold=0.8)):
       print("victory-confirm", now)
 
       
     if(clickBtn(images['close'], timeout=0.2, threshold=0.9)):
       print("CLOSE")    
 
-    if(clickBtn(images['no-ammo'], timeout=0.2)):
-      print(pyautogui.position())
-      if(clickBtn(images['remove-spaceship'], timeout=1)):
-        print("Remove Spaceship", now)
+    # if(clickBtn(images['no-ammo'], timeout=0.2)):
+    #   print(pyautogui.position())
+    #   if(clickBtn(images['remove-spaceship'], timeout=1)):
+    #     print("Remove Spaceship", now)
 
 
     if(clickBtn(images['newest'], timeout=1)):
       if(clickBtn(images['max-ammo'], timeout=1,threshold = 0.9)):
         print("SET MAX AMMO", now)
-
-
     
-
-
-    if(clickBtn(images['surrender-boss'], timeout=0.2, threshold = 1)):
-      if(clickBtn(images['surrender'], timeout=0.2)):
-       if(clickBtn(images['surrender-confirm'], timeout=0.2)):
-        print("surrender-confirm", now)
-
-
-    if(clickBtn(images['spaceship-empty'], timeout=0.2, threshold = 0.9)):
-      print("spaceship-empty", now)    
-      if(clickBtn(images['rocket'], timeout=0.2, threshold = 0.9)):
-        print("SEND TO REPAIR", now)
-
-
-    if(clickBtn(images['lose-confirm'], timeout=0.2, threshold = 0.9)):
-      print("lose-confirm", now)
-
-    if(clickBtn(images['send-to-fight'], timeout=1, threshold=1)):
-      print("send-to-fight", now)
-      if(clickBtn(images['15-15'], timeout=0.2, threshold = 1)):
-        if(clickBtn(images['fight-boss'], timeout=0.2)):
-          print("send-to-boss", now)
-    else:
-      print("no send-to-fight", now)
-      if(clickBtn(images['select-15'], timeout=0.2, threshold = 0.9)):
+    if(clickBtn(images['team'], timeout=0.5, threshold = 1)):
+      print("strategy-team", now)
+      if(clickBtn(images['fight-boss'], timeout=0.8)):
+        print("team-send-to-boss", now)
+    else:    
+      if(clickBtn(images['send-to-fight'], timeout=0.5, threshold=0.9)):
+        print("send-to-fight", now)
+        # if(clickBtn(images['fight-boss'], timeout=0.8)):
+      else:
+        print("no send-to-fight", now)
         if(clickBtn(images['fight-boss'], timeout=0.2)):
           print("send-to-boss", now)
  
+
+
+    if(clickBtn(images['surrender-boss'], timeout=0.8, threshold = 1)):
+      if(clickBtn(images['surrender'], timeout=0.8)):
+       if(clickBtn(images['surrender-confirm'], timeout=0.8)):
+        print("surrender-confirm", now)
+
+
+    if(clickBtn(images['spaceship-empty'], timeout=1, threshold = 0.95)):
+      print("spaceship-empty", now)    
+      if(clickBtn(images['rocket'], timeout=0.8, threshold = 0.9)):
+        print("SEND TO REPAIR", now)
+
+
+    if(clickBtn(images['lose-confirm'], timeout=0.8, threshold = 0.9)):
+      print("lose-confirm", now)
+      if(clickBtn(images['rocket'], timeout=0.8, threshold = 0.9)):
+        print("SEND TO REPAIR", now)
+
+   
 
 
 
