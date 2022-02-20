@@ -81,7 +81,7 @@
     green_bar: 0.9
 
   resolution:
-    monitors: 2
+    monitors: 1
     monitor_selected: 1
   scroll:  
     # [en_US]

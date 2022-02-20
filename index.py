@@ -209,7 +209,7 @@ def main():
   
     if(genesis):
       ## IN HOME
-      team = checkImage(images['team'], 1)
+      team = checkImage(images['team'], 0.98)
       send_to_fight = checkImage(images['send-to-fight'], 0.9)
       # CHECK TARGET TEAM
       if(team):
