@@ -50,8 +50,7 @@ print("""\
 resolution = c['resolution']
 print("CONFIGURATION[RESOLUTION]:", resolution)
 
-pause = c['time_intervals']['interval_between_moviments']
-pyautogui.PAUSE = pause
+pyautogui.PAUSE = 0.5
 
 
 def moveTo(x,y,t):
@@ -136,22 +135,6 @@ def checkImage(img, threshold=ct['default']):
         return False
     return True
 
-def scroll(images):
-    
-    scroll = positions(images['scroll-spaceship'], threshold = 1)
-    x,y,w,h = scroll[0]
-    
-    empty_scrolls_attempts = c['scroll']['attemps']
-
-    while(empty_scrolls_attempts >0):
-      moveTo(x,y,1)
-      if not c['scroll']['use_click_and_drag_instead_of_scroll']:
-          pyautogui.scroll(-c['scroll']['size'])
-      else:
-          pyautogui.dragRel(0,-c['scroll']['click_and_drag_amount'],duration=1, button='left')
-      empty_scrolls_attempts -= 1    
-
-
 
 def main():
   printScreen()
@@ -164,11 +147,13 @@ def main():
       clickBtn(images['connect-wallet'], 0, 0.9)
       clickBtn(images['sign'], timeout=2)
       print("connect-wallet", now)
+      continue
 
     play = checkImage(images['play'], threshold=0.9)
     if play:
       clickBtn(images['play'],0,0.9)  
       print("play", now)
+      continue
 
     surrender = checkImage(images['surrender'], 0.9)
     genesis = checkImage(images['genesis'], 0.9)
@@ -179,11 +164,14 @@ def main():
     if(lose_confirm):
       clickBtn(images['lose-confirm'],0,0.9)
       print("lose-confirm", now)
+      continue
+
 
     # CHECK IF NEED CLOSE
     if(close):
       clickBtn(images['close'],0,0.9)
       print("close", now)
+      continue
 
     if(surrender):
       ## IN BATTLE
@@ -192,6 +180,7 @@ def main():
       if(victory_confirm):
         clickBtn(images['victory-confirm'],0,0.7)
         print("victory-confirm", now)
+        continue
     
       
       # SURRENDER WHEN IT FINDS THE BOSS
@@ -200,11 +189,13 @@ def main():
         clickBtn(images['surrender'], 0, 0.8)
         clickBtn(images['surrender-confirm'], 0.5, 0.8)
         print("surrender-confirm", now)
+        continue
 
       # CHECK FOR EMPTY SPACESHIPS
       spaceship_empty = checkImage(images['spaceship-empty'], 0.95)
       if(spaceship_empty):
         clickBtn(images['rocket'], 0, 0.9)
+        continue
       
   
     if(genesis):
@@ -215,15 +206,18 @@ def main():
       if(team):
         clickBtn(images['fight-boss'],0,0.8)
         print("fight-boss", now)
+        continue
       else: 
         # SEND TO FIGHT
         if(send_to_fight):
           clickBtn(images['send-to-fight'],0,0.9)
+          continue
         else:  
           # REMOVE SPACESHIPs
           remove = checkImage(images['remove-spaceship'], 0.9)
           if(remove): 
             clickBtn(images['remove-spaceship'],0,0.9)
+            continue
 
       
 if __name__ == '__main__':
