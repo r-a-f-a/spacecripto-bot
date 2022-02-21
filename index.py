@@ -153,6 +153,11 @@ def main():
       clickBtn(images['play'],0,0.9)  
       print("play", now)
 
+    close = checkImage(images['close'], threshold=0.9)
+    if close:
+      clickBtn(images['close'],0,0.9)  
+      print("close", now)   
+
     surrender = checkImage(images['surrender'], 0.9)
     genesis = checkImage(images['genesis'], 0.9)
     lose_confirm = checkImage(images['lose-confirm'], 0.9)
