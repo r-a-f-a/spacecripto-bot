@@ -50,7 +50,7 @@ print("""\
 resolution = c['resolution']
 print("CONFIGURATION[RESOLUTION]:", resolution)
 
-pyautogui.PAUSE = 0.5
+pyautogui.PAUSE = 1
 
 
 def moveTo(x,y,t):
@@ -147,13 +147,11 @@ def main():
       clickBtn(images['connect-wallet'], 0, 0.9)
       clickBtn(images['sign'], timeout=2)
       print("connect-wallet", now)
-      continue
 
     play = checkImage(images['play'], threshold=0.9)
     if play:
       clickBtn(images['play'],0,0.9)  
       print("play", now)
-      continue
 
     surrender = checkImage(images['surrender'], 0.9)
     genesis = checkImage(images['genesis'], 0.9)
