@@ -144,12 +144,19 @@ def main():
     now = time.time()
     connect_wallet = checkImage(images['connect-wallet'])
     sign = checkImage(images['sign'])
+    ok = checkImage(images['ok'])
+
     if connect_wallet:
       clickBtn(images['connect-wallet'], 0, 0.9)
 
     if sign:  
       clickBtn(images['sign'], timeout=1)
       print("connect-wallet", now)
+
+    if ok:
+      clickBtn(images['ok'], timeout=1)
+      print("Fail to login", now)
+
 
     play = checkImage(images['play'], threshold=0.9)
     if play:
@@ -188,7 +195,7 @@ def main():
     
       
       # SURRENDER WHEN IT FINDS THE BOSS
-      surrender_boss = checkImage(images['surrender-boss'], 1)  
+      surrender_boss = checkImage(images['surrender-boss'], 0.98)  
       if(surrender_boss):
         clickBtn(images['surrender'], 0, 0.8)
         clickBtn(images['surrender-confirm'], 0.5, 0.8)
