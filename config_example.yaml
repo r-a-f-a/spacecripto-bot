@@ -11,7 +11,14 @@
     # Valor padrão: 0.7
     default: 0.7
 
+  timeout:
+    connect_wallet: 1
+    sign: 2
+    send_to_fight: 0.5
+    send_to_boss: 1
+    surrender: 0.5
+    empty_spaceships: 1
 
   resolution:
-    monitors: 2
+    monitors: 1
     monitor_selected: 1

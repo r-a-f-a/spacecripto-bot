@@ -143,9 +143,12 @@ def main():
   while True:
     now = time.time()
     connect_wallet = checkImage(images['connect-wallet'])
+    sign = checkImage(images['sign'])
     if connect_wallet:
       clickBtn(images['connect-wallet'], 0, 0.9)
-      clickBtn(images['sign'], timeout=2)
+
+    if sign:  
+      clickBtn(images['sign'], timeout=1)
       print("connect-wallet", now)
 
     play = checkImage(images['play'], threshold=0.9)
