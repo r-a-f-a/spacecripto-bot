@@ -116,7 +116,7 @@ def clickBtn(img, timeout=3, threshold = ct['default']):
       
         if(len(matches)==0):
             has_timed_out = time.time()-start > timeout
-            continue
+    
 
         x,y,w,h = matches[0]
         pos_click_x = x+w/2
@@ -167,14 +167,12 @@ def main():
     if(lose_confirm):
       clickBtn(images['lose-confirm'],0,0.9)
       print("lose-confirm", now)
-      continue
 
 
     # CHECK IF NEED CLOSE
     if(close):
       clickBtn(images['close'],0,0.9)
       print("close", now)
-      continue
 
     if(surrender):
       ## IN BATTLE
@@ -183,7 +181,7 @@ def main():
       if(victory_confirm):
         clickBtn(images['victory-confirm'],0,0.7)
         print("victory-confirm", now)
-        continue
+
     
       
       # SURRENDER WHEN IT FINDS THE BOSS
@@ -192,13 +190,13 @@ def main():
         clickBtn(images['surrender'], 0, 0.8)
         clickBtn(images['surrender-confirm'], 0.5, 0.8)
         print("surrender-confirm", now)
-        continue
+
 
       # CHECK FOR EMPTY SPACESHIPS
       spaceship_empty = checkImage(images['spaceship-empty'], 0.95)
       if(spaceship_empty):
         clickBtn(images['rocket'], 0, 0.9)
-        continue
+
       
   
     if(genesis):
@@ -209,18 +207,18 @@ def main():
       if(team):
         clickBtn(images['fight-boss'],0,0.8)
         print("fight-boss", now)
-        continue
+
       else: 
         # SEND TO FIGHT
         if(send_to_fight):
           clickBtn(images['send-to-fight'],0,0.9)
-          continue
+  
         else:  
           # REMOVE SPACESHIPs
           remove = checkImage(images['remove-spaceship'], 0.9)
           if(remove): 
             clickBtn(images['remove-spaceship'],0,0.9)
-            continue
+    
 
       
 if __name__ == '__main__':
